@@ -3,9 +3,6 @@ kind: Deployment
 metadata:
   name: frontend
   namespace: three-tier
-  labels:
-    role: frontend
-    env: demo
 spec: 
   replicas: 1
   strategy:
@@ -21,14 +18,8 @@ spec:
       labels:
         role: frontend
     spec: 
-      imagePullSecrets:
-      - name: ecr-registry-secret
       containers:
       - name: frontend
-        image: frontend:latest 
+        image: hello-world:latest
         imagePullPolicy: Always
-        env:
-          - name: REACT_APP_BACKEND_URL
-            value: "http://backend.amanpathakdevops.study/api/tasks"
-        ports:
-        - containerPort: 3000
+     
